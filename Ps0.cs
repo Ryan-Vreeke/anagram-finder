@@ -9,49 +9,38 @@ namespace algorithms
         public static void Main(string[] args)
         {
             Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            ArrayList list = new ArrayList();
             //Parsing input for the numbers
             string numbers = Console.ReadLine();
             int n = Convert.ToInt32(numbers.Split(' ')[0]);
             int k = Convert.ToInt32(numbers.Split(' ')[1]);
+            int count = 0;
 
             for (int i = 0; i < n; i++)//first loop to gather input and place into dictionary and list O(n)
             {
-                string input = Console.ReadLine();
-                dictionary.Add(input, 0);//time complexity to insert into a dictionary is O(1)
+                string input = StringSort(Console.ReadLine());
+                if(dictionary.ContainsKey(input)){
+                    dictionary[input] = dictionary[input] + 1;
+                }else{
+                    dictionary.Add(input, 0);
+                }
             }
 
-            // running algorithm
-            int count = 0;
-            foreach (string w in words)
-            {
-                bool anagram = false;
-
-                if (dictionary[w] == 0)
-                {
-                    foreach (string p in GetPermutations(w))
-                    { //get permuations of a word w and loop through them. Time complexity is O(k!)
-                        if (dictionary.ContainsKey(p) && p != w)
-                        {
-                            anagram = true;
-                            dictionary[p] = 1;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    anagram = true;
-                }
-
-
-                if (!anagram)
-                {
+            foreach(string s in dictionary.Keys){
+                if(dictionary[s] == 0){
                     count++;
                 }
-
             }
 
             System.Console.WriteLine(count);
+        }
+
+
+        public static string StringSort(string input)
+        {
+            char[] array = input.ToCharArray();
+            Array.Sort(array);
+            return new string(array);
         }
     }
 }

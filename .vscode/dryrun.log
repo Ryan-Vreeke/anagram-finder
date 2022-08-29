@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/ryan/Documents/School/4150/PS0'
+make: Entering directory '/home/ryan/Documents/School/Algorithms/anagram-finder'
 mcs -out:temp.exe Ps0.cs
-make: Leaving directory '/home/ryan/Documents/School/4150/PS0'
+make: Leaving directory '/home/ryan/Documents/School/Algorithms/anagram-finder'
  
